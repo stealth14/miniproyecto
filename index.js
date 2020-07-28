@@ -1,3 +1,4 @@
+//chente
 function respuestavalida(){
     var valida;
 
@@ -20,13 +21,27 @@ function confirmar(){
 
 }
 
-
+//ronny
 function animarPersonaje(){
 
 }
 
+//diego
 function mostrarPenitencia(){
-    $('#penitencia').append('haga lartijas')
+
+    var indice = Math.random(10-2);
+
+    const penitencias = [
+        'haga sentadillas',
+        'haga saltos',
+        'lagartijas',
+        'aplausos'
+    ]
+
+    //sacar aleatorio del 1 al 3
+
+    $('#penitencia').append(penitencias[indice]);
+
 }
 
 mostrarPenitencia();
