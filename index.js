@@ -1,3 +1,5 @@
+let distancia = 0;
+
 //chente
 function respuestavalida() {
     var valida;
@@ -26,10 +28,19 @@ const animarAvatar = () => {
       }, 1000, function() {
         // Animation complete.
         console.log( "animated!" );
+        distancia+=100;
       });
 
 }
+const reiniciarAvatar = () => {
 
+	$( "#avatar" ).animate({
+        left: `-=${distancia}`,
+      }, 1000, function() {
+        // Animation complete.
+        console.log( "animated!" );
+      });
+}
 
 
 //diego
@@ -79,6 +90,11 @@ $('#mostrarPenitencia').on('click', function () {
             $('#btn-animar').on(
                 'click',animarAvatar
             )
+
+            $('#btn-reiniciar').on(
+                'click',reiniciarAvatar
+            )
+            
             console.log( "ready!" );
             mostrarPenitencia();
 
