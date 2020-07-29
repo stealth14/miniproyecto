@@ -35,8 +35,9 @@ const animarAvatar = () => {
 const reiniciarAvatar = () => {
 
 	$( "#avatar" ).animate({
-        left: `-=${distancia}`,
+        left: `-=${distancia+100}`,
       }, 1000, function() {
+        distancia=0;
         // Animation complete.
         console.log( "animated!" );
       });
