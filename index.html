@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -7,45 +8,63 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
     <title>Cuarentena fitness</title>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="row espacio-animacion"></div>
-    <div class="row pregunta-y-penitencia">
-        <div class="col-8">
-            <div class="row">
-                <button id="verificarRespuesta">Verificar</button>
+    <div class="container">
+        <button id="btn-animar">animar</button>
+        <button id = "mostrarPenitencia" >mostrar penitencia</button>
+        <div class="panel-animacion">
+            <div id="avatar">
+                <img src="./images/user.png" alt="">
             </div>
+        
         </div>
-        <div class="col-4 ventana-penitencia">
-            <div class="row">
-                <div class="col">
-                    <h1 class="opsy">Oopsy!!</h1>
-                    <div id="penitencia"></div>
+    </div>
+    
+    <div class="container panel-controles">
+
+        <div class="row">
+            <div class="col-sm-7 col-md-7 col-xs-12 forma">
+                <form>
+                    <label id="pregunta">¿El pollo tiene proteína?</label>
+
+                    <select class="custom-select" multiple>
+                        <option selected value="0">False</option>
+                        <option value="1">True</option>
+                    </select>
+
+                </form>
+            </div>
+
+            <div class="col-sm-4 col-md-4 col-xs-12 penitencia">
+                <div class="mostrar-penitencia">
+                    <h3 class="opsy">Oopsy!!</h3>
                 </div>
             </div>
         </div>
+
     </div>
 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-</div>
+    <script   src="https://code.jquery.com/jquery-3.5.1.js"   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="   crossorigin="anonymous"></script>
 
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
-<script src="index.js"></script>
+        
+    <script src="index.js"></script>
 </body>
+
 </html>
