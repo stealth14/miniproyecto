@@ -1,36 +1,44 @@
 //chente
-function respuestavalida() {
-  var valida;
+$( document ).ready( function() {
+  function respuestavalida() {
+    var valida;
 
-  //procesar pregunta
+    //procesar pregunta
 
-  return valida
-}
-
-function confirmar() {
-
-  if( respuestavalida() ) {
-
-    //chequear si es al ultima
-    //animar muñeco
-    //avanzar siguiente
-  } else {
-    mostrarPenitencia();
+    return valida
   }
 
-}
+  function confirmar() {
+
+    if( respuestavalida() ) {
+
+      //chequear si es al ultima
+      //animar muñeco
+      //avanzar siguiente
+    } else {
+      mostrarPenitencia();
+    }
+
+  }
 
 //ronny
-function animarPersonaje() {
+  function animarPersonaje() {
 
-}
+  }
 
 //diego
-$( document ).ready( function() {
+
 
   let numberPenitencia;
+  $( '#verificarRespuesta' ).on( 'click', function() {
+    mostrarPenitencia();
 
+  } )
+})
+  //}
   function mostrarPenitencia() {
+    $( '#penitencia' ).html( '' );
+    $( '.opsy' ).toggleClass( 'opsy opsy-mostrar' );
 
     numberPenitencia = Math.floor( Math.random() * (21 - 1) ) + 1;
     const penitencias = [
@@ -55,15 +63,6 @@ $( document ).ready( function() {
       'realize 5 flexiones de triceps',
       "mantenga la posición plancha por 10 minuto"
     ]
-
-    //sacar aleatorio del 1 al 3
-
-    //$( '#penitencia' ).append( penitencias[numberPenitencia] );
-
-  }
-
-  $( '.verificarRespuesta' ).on( 'click', function() {
-    $( '.opsy' ).html( 'Oopsy!!' );
     $( '#penitencia' ).append( penitencias[numberPenitencia] );
-  } )
-} )
+    $('.ventana-penitencia').css( 'background-color', '#e7d4a8' );
+  }
