@@ -26,11 +26,11 @@ body {
     margin-top: 20px;
 }
 
-.opsy {
+.penitencia-hide {
     display: none;
 }
 
-.opsy-mostrar {
+.penitencia-show {
     font-family: "Berlin Sans FB";
     margin: 30px;
     text-align: center;

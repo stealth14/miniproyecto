@@ -57,10 +57,12 @@ function validar(){
     var valida = $("input[type=radio]:checked").val();
     if (valida==res_correcta) {
         //alert("Muy bien");
+        $('.penitencia-show').toggleClass('penitencia-hide penitencia-show')
         contestar='<h4 class="text-success">¡Haz acertado!</h4>';
         document.getElementById("contestar").innerHTML=contestar;
         animarAvatar();
         jugar();
+
     }else{
         //alert("Que mal");
         contestar='<h4 class="text-danger">¡Haz fallado!</h4>';
@@ -140,7 +142,8 @@ const cambiarTamanio = (dimensiones) =>{
 //diego
 
 function mostrarPenitencia() {
-
+    $('.penitenciaRealizar').html('');
+    $('.penitencia-hide').toggleClass('penitencia-hide penitencia-show');
     numberPenitencia = Math.floor(Math.random() * (21 - 1)) + 1;
     const penitencias = [
         'Realize 5 sentadillas',
@@ -164,11 +167,7 @@ function mostrarPenitencia() {
         'Realize 5 flexiones de triceps',
         "Mantenga la posición plancha por 10 minuto"
     ]
-
-    console.log(penitencias[numberPenitencia]);
-    $('.opsy').html('');
-    $('.opsy').append(penitencias[numberPenitencia]);
-
+    $('.penitenciaRealizar').append(penitencias[numberPenitencia]);
 }
 
 
