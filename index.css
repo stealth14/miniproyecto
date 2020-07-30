@@ -3,6 +3,7 @@ body {
     /* background-image: url("images/sports.jpg"); */
     background-size: cover;
     font-family: 'Rowdies', cursive;
+    min-height: 850px;
 }
 
 .espacio-animacion {
@@ -11,8 +12,6 @@ body {
     background-color: #ffffff;
     margin-top: 20px;
 }
-
-
 
 #verificarRespuesta {
     text-align: center;
@@ -24,10 +23,6 @@ body {
     height: 300px;
     background-color: #ffffff;
     margin-top: 20px;
-}
-
-.opsy {
-    display: none;
 }
 
 .opsy-mostrar {
@@ -42,10 +37,29 @@ body {
 }
 
 /*layout*/
+#contestar{
+    margin: 0 auto;
+    text-align: center;
+}
+#pregunta{
+    min-height: 100px;
+}
+
+#respuestas {
+    margin: 16px 0;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+    margin-right: 9px;
+}
 
 .panelanimacion {
-    margin-top: 60px;
-    min-height: 300px;
+    margin-top: 30px;
+    min-height: 100px;
     margin-bottom: 60px;
     border-radius: 20px;
     background-color: #80deea;
@@ -56,8 +70,14 @@ body {
     min-height: inherit;
 }
 
+.forma button{
+    margin-top: 30px;
+}
+
 .penitencia {
+    display:none;
     margin: 27px 17px;
+    min-width: 300px;
     min-height: 100px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 20px;

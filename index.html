@@ -21,15 +21,14 @@
 <body>
 
     <div class="container">
-        <!--<button id="btn-animar">avanzar</button>
-        <button id="btn-reiniciar">reiniciar posición</button>
-        <button id="btn-color">cambiar color</button>
-        <button id="btn-pulsacion">pulsación</button>
-        <button id="mostrarPenitencia">mostrar penitencia</button>-->
+        <button id="btn-animar">avanzar</button>
+        <!-- <button id="btn-reiniciar">reiniciar posición</button> -->
+        <!-- <button id="btn-color">cambiar color</button> -->
+        <!-- <button id="btn-pulsacion">pulsación</button> -->
+        <!-- <button id="mostrarPenitencia">mostrar penitencia</button> -->
+
         <div class="titulo text-center">
             <h1 class="">Cuarentena Fitness</h1>
-            <h4>Fortaleze tu cuerpo y mente</h4>
-            
         </div>
         <div class="panelanimacion">
             <div id="avatar">
@@ -43,20 +42,42 @@
 
         <div class="row">
             <div class="col-sm-7 col-md-7 col-xs-12 forma">
-                <h3 id="pregunta"></h3> 
+                <h3 id="pregunta"></h3>
                 <div id="respuestas" class="custom-select shadow" multiple></div>
-                <div id="contestar"></div>
                 <button class="btn btn-primary" onclick="validar()">Contestar</button>
             </div>
 
-            <div class="col-sm-4 col-md-4 col-xs-12 penitencia">
-                <div class="mostrar-penitencia">
-                    <h3 id="penitencias" class="opsy"></h3>
+            <div class="col-sm-4 col-md-4 col-xs-12">
+                <div id="contestar"></div>
+                <div class="penitencia">
+                    <div class="mostrar-penitencia">
+                        <h3 id="penitencias" class="opsy"></h3>
+                    </div>
                 </div>
             </div>
         </div>
 
     </div>
+
+    <div id="mymodal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -72,7 +93,7 @@
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.js"></script>
     <script src="index.js"></script>
 </body>
 
