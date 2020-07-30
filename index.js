@@ -1,13 +1,75 @@
-
+var preguntas =[
+    "¿Por qué hacer ejercicio diario?",
+    "¿Cuál es el mejor tipo de ejercicio para perder peso?",
+    "¿Cuál es el músculo más utilizado en el cuerpo humano?",
+    "Quienes sudan mucho y de manera abundante, también pierden mucho peso",
+    "¿Qué son exactamente las agujetas en el deporte?",
+    "¿Cuál es el músculo más grande?",
+    "¿Qué se debe hacer en caso de calambres?",
+    "¿Los aliemntos dietéticos son buenos para la salud?"
+];
+var respuestas =[
+    ["Todas las anteriores.","Mejor calidad de vida.","Fortaleze tus músculos.","Salud."],
+    ["Ejercicios aeróbicos.","Ejercicios de flexibilidad.","Ejercicicos espaciales.","Ejercicios de fuerza y resistencia."],
+    ["Músculo cardiaco.","Gluteos."," Músculos lisosgracias.","Triceps."],
+    ["No","Si","Talvez","Nunca"],
+    ["Son cuerdas que se utilizan para asujetar el calzado.","Es un tipo de ejerccio relacionado con el fortalecimiento de los todillos y rodillas.","Son pequeños desgarros que sufren las fibras musculares al estar expuestas a una sobrecarga.","Ninguna de las anteriores"],
+    ["Gluteus maximus.","Latissimus dorsi.","Corazón","Muslo"],
+    ["Realizar ejercicios de flexibilidad de todo el cuerpo antes de entrenar.","Calentar previamente antes de entrenar.","Tomar un suplemento de magnesio de forma regular antes del entrenamiento.","Matener un entrenamiento fuerte pero constante sin sobrecarga."],
+    ["No","Si","Talvez","Nunca"]
+];
+let distancia = 0;
 var color = 0;
+jugar();
+var res_correcta;
 
 //chente
-function respuestavalida() {
-    var valida;
+function jugar(){
+    var indice_aleatorio = Math.floor(Math.random()*preguntas.length);
+    var res_posible = respuestas[indice_aleatorio];
 
-    //procesar pregunta
+    var posiciones = [0,1,2,3];
+    var res_reordenadas =[];
+    var verificarrepedida=false;
+    for (i in res_posible) {
+        var posicion_aleatorio = Math.floor(Math.random()*posiciones.length);
+        if(posicion_aleatorio==0 && verificarrepedida==false){
+            res_correcta=i;
+            verificarrepedida=true;
+            //alert(i);
+        }
+        res_reordenadas[i] = res_posible[posiciones[posicion_aleatorio]];
+        posiciones.splice(posicion_aleatorio, 1);
+    }
 
-    return valida
+    var texto_respuestas="";
+    for(i in res_reordenadas){
+        texto_respuestas += '<input type ="radio" name="respuesta" value="'+i+'"><label>'+ res_reordenadas[i]+'</label><br>';
+    }
+    //alert(preguntas[indice_aleatorio]);
+    document.getElementById("pregunta").innerHTML= preguntas[indice_aleatorio];
+    document.getElementById("respuestas").innerHTML = texto_respuestas;
+
+}
+
+var contestar="";
+function validar(){
+    var valida = $("input[type=radio]:checked").val();
+    if (valida==res_correcta) {
+        //alert("Muy bien");
+        contestar='<h4 class="text-success">¡Haz acertado!</h4>';
+        document.getElementById("contestar").innerHTML=contestar;
+        animarAvatar();
+        jugar();
+    }else{
+        //alert("Que mal");
+        contestar='<h4 class="text-danger">¡Haz fallado!</h4>';
+        document.getElementById("contestar").innerHTML=contestar;
+        mostrarPenitencia();
+        jugar();
+    }
+    
+    
 }
 
 function confirmar() {
@@ -90,17 +152,17 @@ function mostrarPenitencia() {
         'Realize 20 segundos de posicion plancha',
         'Realize 15 segundos de posicion plancha',
         'Realize 15 segundos de posicion plancha lateral',
-        'realize 10 sentadillas',
-        'realize 10 lagartijas',
-        'realize 2 minutos de estiramiento',
-        'realize 3 minutos de estiramient',
-        'realize 8 lagartijas',
-        'realize 2 minutos de estiramiento',
+        'Realize 10 sentadillas',
+        'Realize 10 lagartijas',
+        'Realize 2 minutos de estiramiento',
+        'Realize 3 minutos de estiramient',
+        'Realize 8 lagartijas',
+        'Realize 2 minutos de estiramiento',
         'Realize 4 sapitos',
-        'mantenga la posición vaca/gato por 1 minuto',
-        'realize 5 flexiones de pecho',
-        'realize 5 flexiones de triceps',
-        "mantenga la posición plancha por 10 minuto"
+        'Mantenga la posición vaca/gato por 1 minuto',
+        'Realize 5 flexiones de pecho',
+        'Realize 5 flexiones de triceps',
+        "Mantenga la posición plancha por 10 minuto"
     ]
 
     console.log(penitencias[numberPenitencia]);
