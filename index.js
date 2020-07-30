@@ -6,7 +6,7 @@ var preguntas = [
     "¿Qué son exactamente las agujetas en el deporte?",
     "¿Cuál es el músculo más grande?",
     "¿Qué se debe hacer en caso de calambres?",
-    "¿Los aliemntos dietéticos son buenos para la salud?"
+    "¿Los alimentos dietéticos son buenos para la salud?"
 ];
 var respuestas = [
     ["Todas las anteriores.", "Mejor calidad de vida.", "Fortaleze tus músculos.", "Salud."],
@@ -47,7 +47,8 @@ function jugar() {
         texto_respuestas += '<input type ="radio" name="respuesta" value="' + i + '"><label>' + res_reordenadas[i] + '</label><br>';
     }
     //alert(preguntas[indice_aleatorio]);
-    document.getElementById("pregunta").innerHTML = preguntas[indice_aleatorio];
+    $('#pregunta').empty();
+    $('#pregunta').append(preguntas[indice_aleatorio]);
     document.getElementById("respuestas").innerHTML = texto_respuestas;
 
 }
