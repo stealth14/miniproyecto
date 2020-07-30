@@ -1,4 +1,5 @@
-let distancia = 0;
+
+var color = 0;
 
 //chente
 function respuestavalida() {
@@ -22,27 +23,57 @@ function confirmar() {
 
 //ronny
 const animarAvatar = () => {
+    cambiarColor();
 
 	$( "#avatar" ).animate({
-        left: `+=100`,
+        left: `+=75`,
       }, 1000, function() {
         // Animation complete.
         console.log( "animated!" );
-        distancia+=100;
       });
 
 }
 const reiniciarAvatar = () => {
-
 	$( "#avatar" ).animate({
-        left: `-=${distancia+100}`,
+        left: `-=${300}`,
       }, 1000, function() {
-        distancia=0;
         // Animation complete.
         console.log( "animated!" );
       });
 }
 
+const cambiarColor = () => {
+    const colors = [
+        '#73F2A4',
+        '#ba68c8',
+        '#64b5f6',
+        '#e6ee9c'
+    ];
+    if(color==colors.length-1){color=0}
+    
+    $( ".panelanimacion" ).animate({        
+        backgroundColor:colors[color],
+      },300,function(){
+          console.log('color changed');
+          color++;
+      });
+}
+
+const pulsacion = () =>{
+    setInterval(()=>cambiarTamanio({width:'120px',height:'120px'}),200);
+
+    setInterval(()=>cambiarTamanio({width:'100px',height:'100px'}),100);
+}
+
+const cambiarTamanio = (dimensiones) =>{
+    $( "#avatar" ).animate({
+        width: dimensiones.width,
+        height: dimensiones.height
+      }, 200, function() {
+        // Animation complete.
+        console.log( "animated!" );
+      });
+}
 
 //diego
 
@@ -84,7 +115,6 @@ $('#mostrarPenitencia').on('click', function () {
     mostrarPenitencia();
 });
 
-  //}
 
   $(document).ready(
       ()=>{
@@ -95,9 +125,14 @@ $('#mostrarPenitencia').on('click', function () {
             $('#btn-reiniciar').on(
                 'click',reiniciarAvatar
             )
-            
-            console.log( "ready!" );
-            mostrarPenitencia();
 
+            $('#btn-pulsacion').on(
+                'click',pulsacion
+            )
+            
+            $('#btn-color').on(
+                'click',cambiarColor
+            )
+            
       }
   )
