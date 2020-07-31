@@ -25,6 +25,42 @@ var res_correcta;
 //response selection
 var selectedResponse;
 
+//cronometro
+var min = 0;
+var s = 0;
+var ms = 0;
+//referencia a funcion de intervalo
+var ref;
+
+const iniciarContador = () => {
+
+    ref = setInterval(() => {
+        if (ms < 59) {
+            $('#cronometro h3').html(`${min < 10 ? `0${min}` : min}:${s < 10 ? `0${s}` : s}:${ms < 10 ? `0${ms}` : ms}`);
+            ms++;
+        } else {
+            ms = 0;
+
+            if (s < 59) {
+                s++;
+            } else {
+                s = 0;
+                min++;
+            }
+        }
+
+    }, 10);
+}
+
+const reiniciarContador = () => {
+
+}
+
+const detenerContador = () => {
+    //detener contador
+    clearInterval(ref);
+}
+
 //chente
 function jugar() {
     var indice_aleatorio = Math.floor(Math.random() * preguntas.length);
@@ -56,7 +92,7 @@ function jugar() {
     $('#responses').html('');
 
     res_reordenadas.forEach(
-        (res_reordenada,index) => {
+        (res_reordenada, index) => {
             $('#responses').append(
                 `<option value="${index}">${res_reordenada}</option>`
             )
@@ -116,11 +152,12 @@ const animarAvatar = () => {
         ancho = ancho - length;
 
         if (distancia > ancho) {
-            // alert('Ganaste!!')
-            contestar = '<h4 class="text-success">Ganaste!</h4>';
+        
+            contestar = '<h4 class="text-success">Ganaste el juego!!</h4>';
             document.getElementById("contestar").innerHTML = contestar;
             $('.penitencia').hide();
             reiniciarAvatar();
+            detenerContador();
         }
         // Animation complete.
         console.log("animated!");
@@ -144,9 +181,9 @@ const reiniciarAvatar = () => {
 
 const cambiarColor = () => {
     const colors = [
+        '#64b5f6',
         '#73F2A4',
         '#ba68c8',
-        '#64b5f6',
         '#e6ee9c'
     ];
     if (color == colors.length - 1) { color = 0 }
@@ -252,11 +289,14 @@ $(document).ready(
         $('#btn-color').on(
             'click', cambiarColor
         )
-
-        $("#responses").change(function () {
+        
+        //on change del selector de respuesta
+        $("#responses").change(function () {    
             selectedResponse = $(this).children("option:selected").val();
-
         });
+
+        iniciarContador();
+
 
     }
 )

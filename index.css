@@ -53,12 +53,11 @@ body {
     border-radius: 20px;
 }
 
-#responses option{ 
+#responses option {
     height: 40px;
-
 }
 
-#responses option:hover{ 
+#responses option:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -81,9 +80,9 @@ input[type=checkbox], input[type=radio] {
 .panelanimacion {
     margin-top: 30px;
     min-height: 100px;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     border-radius: 20px;
-    background-color: #80deea;
+    background-color: #ba68c8;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -126,3 +125,12 @@ input[type=checkbox], input[type=radio] {
 .custom {
     background-color: khaki;
 }
+
+#cronometro{
+    font-family: monospace;
+    font-size: 2em;
+    padding-top: 1em;
+    text-align: center;
+}
+
+#cronometro h3
