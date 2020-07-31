@@ -1,3 +1,5 @@
+$("#denuevo").hide();
+
 var preguntas = [
     "¿Por qué hacer ejercicio diario?",
     "¿Cuál es el mejor tipo de ejercicio para perder peso?",
@@ -9,7 +11,7 @@ var preguntas = [
     "¿Los alimentos dietéticos son buenos para la salud?"
 ];
 var respuestas = [
-    ["Todas las anteriores.", "Mejor calidad de vida.", "Fortaleze tus músculos.", "Salud."],
+    ["Todas las anteriores.", "Mejor calidad de vida.", "Fortalece tus músculos.", "Salud."],
     ["Ejercicios aeróbicos.", "Ejercicios de flexibilidad.", "Ejercicicos espaciales.", "Ejercicios de fuerza y resistencia."],
     ["Músculo cardiaco.", "Gluteos.", " Músculos lisos.", "Triceps."],
     ["No", "Si", "Talvez", "Nunca"],
@@ -53,6 +55,12 @@ const iniciarContador = () => {
 }
 
 const reiniciarContador = () => {
+    $('#cronometro h3').html('00:00:00');
+    clearInterval(ref);
+    ref = null;
+    min = 0;
+    ms = 0;
+    s = 0;
 
 }
 
@@ -152,12 +160,17 @@ const animarAvatar = () => {
         ancho = ancho - length;
 
         if (distancia > ancho) {
-        
-            contestar = '<h4 class="text-success">Ganaste el juego!!</h4>';
+            const cron = $('#cronometro h3')
+            contestar = `<h4 class="text-success">Ganaste el juego!! Tu tiempo fué ${cron.html()}</h4>`;
+            //deshabilita 
+            $("#cont").prop('disabled', true);
+            $('#denuevo').show();
+
             document.getElementById("contestar").innerHTML = contestar;
             $('.penitencia').hide();
             reiniciarAvatar();
             detenerContador();
+            reiniciarContador();
         }
         // Animation complete.
         console.log("animated!");
@@ -270,6 +283,12 @@ let numberPenitencia;
 $('#mostrarPenitencia').on('click', function () {
     mostrarPenitencia();
 });
+const jugarDenuevo = () =>{
+    $("#cont").prop('disabled', false);
+    reiniciarContador();
+    iniciarContador();
+    $("#denuevo").hide();
+}
 
 
 $(document).ready(
@@ -289,6 +308,10 @@ $(document).ready(
         $('#btn-color').on(
             'click', cambiarColor
         )
+        $('#denuevo').on(
+            'click', jugarDenuevo
+        )
+
         
         //on change del selector de respuesta
         $("#responses").change(function () {    
@@ -296,8 +319,7 @@ $(document).ready(
         });
 
         iniciarContador();
-
-
     }
 )
+
 
