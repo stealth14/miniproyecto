@@ -22,6 +22,8 @@ let distancia = 0;
 var color = 0;
 jugar();
 var res_correcta;
+//response selection
+var selectedResponse;
 
 //chente
 function jugar() {
@@ -49,14 +51,27 @@ function jugar() {
     //alert(preguntas[indice_aleatorio]);
     $('#pregunta').empty();
     $('#pregunta').append(preguntas[indice_aleatorio]);
-    document.getElementById("respuestas").innerHTML = texto_respuestas;
+
+    //agrega opciones de respuesta
+    $('#responses').html('');
+
+    res_reordenadas.forEach(
+        (res_reordenada,index) => {
+            $('#responses').append(
+                `<option value="${index}">${res_reordenada}</option>`
+            )
+        }
+    )
 
 }
 
 var contestar = "";
 function validar() {
-    var valida = $("input[type=radio]:checked").val();
-    if (valida == res_correcta) {
+    console.log(selectedResponse);
+    console.log(res_correcta);
+
+
+    if (selectedResponse == res_correcta) {
         $('.penitencia').hide();
         //alert("Muy bien");
         contestar = '<h4 class="text-success">¡Correcto!</h4>';
@@ -95,12 +110,12 @@ const animarAvatar = () => {
     $("#avatar").animate({
         left: `+=75`,
     }, 300, function () {
-        distancia+=75;
+        distancia += 75;
         var ancho = $('.panelanimacion').width()
-        var length = ancho*0.15;
-        ancho = ancho-length;
-        
-        if(distancia>ancho){
+        var length = ancho * 0.15;
+        ancho = ancho - length;
+
+        if (distancia > ancho) {
             // alert('Ganaste!!')
             contestar = '<h4 class="text-success">Ganaste!</h4>';
             document.getElementById("contestar").innerHTML = contestar;
@@ -114,15 +129,15 @@ const animarAvatar = () => {
 }
 const reiniciarAvatar = () => {
     var ancho = $('.panelanimacion').width();
-    var length = ancho*0.15;
+    var length = ancho * 0.15;
 
-    ancho = ancho-length;
+    ancho = ancho - length;
 
     $("#avatar").animate({
         left: `-=${ancho}`,
     }, 300, function () {
         // Animation complete.
-        distancia=0;
+        distancia = 0;
         console.log("animated!");
     });
 }
@@ -237,6 +252,11 @@ $(document).ready(
         $('#btn-color').on(
             'click', cambiarColor
         )
+
+        $("#responses").change(function () {
+            selectedResponse = $(this).children("option:selected").val();
+
+        });
 
     }
 )

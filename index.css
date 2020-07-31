@@ -37,18 +37,39 @@ body {
 }
 
 /*layout*/
-#contestar{
+
+#contestar {
     margin: 0 auto;
     text-align: center;
 }
-#pregunta{
+
+#pregunta {
     min-height: 100px;
+}
+
+#responses {
+    margin: 16px 0;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#responses option{ 
+    height: 40px;
+
+}
+
+#responses option:hover{ 
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 #respuestas {
     margin: 16px 0;
     padding: 20px;
     border-radius: 20px;
+}
+
+#respuestas option {
+    padding: 30px 0;
 }
 
 input[type=checkbox], input[type=radio] {
@@ -70,12 +91,12 @@ input[type=checkbox], input[type=radio] {
     min-height: inherit;
 }
 
-.forma button{
+.forma button {
     margin-top: 30px;
 }
 
 .penitencia {
-    display:none;
+    display: none;
     margin: 27px 17px;
     min-width: 300px;
     min-height: 100px;
