@@ -5,21 +5,24 @@ var preguntas = [
     "¿Por qué hacer ejercicio diario?",
     "¿Cuál es el mejor tipo de ejercicio para perder peso?",
     "¿Cuál es el músculo más utilizado en el cuerpo humano?",
-    "Quienes sudan mucho y de manera abundante, también pierden mucho peso",
+    "¿Quienes sudan mucho y de manera abundante, también pierden mucho peso?",
     "¿Qué son exactamente las agujetas en el deporte?",
     "¿Cuál es el músculo más grande?",
-    "¿Qué se debe hacer en caso de calambres?",
-    "¿Los alimentos dietéticos son buenos para la salud?"
-];
+    "¿Qué se debe hacer para evitar calambres?",
+    "¿Los alimentos dietéticos son buenos para la salud?",
+    "¿Cuánto tiempo se necesita para crear un hábito?",
+    "¿Qué son los suplementos dietéticos"];
 var respuestas = [
-    ["Todas las anteriores.", "Mejor calidad de vida.", "Fortalece tus músculos.", "Salud."],
+    ["Todas.", "Mejor calidad de vida.", "Fortalece tus músculos.", "Salud."],
     ["Ejercicios aeróbicos.", "Ejercicios de flexibilidad.", "Ejercicicos espaciales.", "Ejercicios de fuerza y resistencia."],
     ["Músculo cardiaco.", "Gluteos.", " Músculos lisos.", "Triceps."],
-    ["No", "Si", "Talvez", "Nunca"],
-    ["Cuerdas para asujetar el calzado.", "Ejercicio de los tobillos y rodillas.", "Desgarros que sufren las fibras musculares.", "Ninguna de las anteriores"],
+    ["No.", "Si.", "Talvez.", "Nunca."],
+    ["Desgarros que sufren las fibras musculares.","Cuerdas para asujetar el calzado.", "Ejercicio de los tobillos y rodillas.","Ninguna."],
     ["Gluteus maximus.", "Latissimus dorsi.", "Corazón", "Muslo"],
-    ["Ejercicios de flexibilidad antes de entrenar.", "Calentar previamente antes de entrenar.", "Tomar un suplemento de magnesio", "Entrenamiento constante y sin sobrecarga."],
-    ["No", "Si", "Talvez", "Nunca"]
+    ["Tomar un suplemento de magnesio.","Ejercicios de flexibilidad antes de entrenar.", "Calentar previamente antes de entrenar.", "Entrenamiento constante y sin sobrecarga."],
+    ["Son buenos con control de un nutricionista.", "No son buenos para la salud.", "Son buenos, por ser sustitutos energéticos que no engordan.", "Ni buenos, ni malos."],
+    ["66 días.", "56 días.", "21 días.", "40 días."],
+    ["Alimentos cuyo objetivo es complementar un régimen normal.", "Nutrientes: vitaminas y minerales.", "Son alimentos que ayudan a nuestro cuerpo a perder peso.", "Suplementos vitamínicos que ayudan a una dieta."]
 ];
 let distancia = 0;
 var color = 0;
