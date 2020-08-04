@@ -1,4 +1,5 @@
 $("#denuevo").hide();
+var progress = 0;
 
 var preguntas = [
     "¿Por qué hacer ejercicio diario?",
@@ -64,10 +65,15 @@ const reiniciarContador = () => {
 
 }
 
+const reiniciarProgressbar = () => {
+    progress = 0;
+}
+
 const detenerContador = () => {
     //detener contador
     clearInterval(ref);
 }
+
 
 //chente
 function jugar() {
@@ -121,7 +127,9 @@ function validar() {
         contestar = '<h4 class="text-success">¡Correcto!</h4>';
         document.getElementById("contestar").innerHTML = contestar;
         animarAvatar();
+        reiniciarProgressbar();
         jugar();
+        
     } else {
         $('.penitencia').show();
 
@@ -129,6 +137,7 @@ function validar() {
         contestar = '<h4 class="text-danger">¡Fallaste!</h4>';
         document.getElementById("contestar").innerHTML = contestar;
         mostrarPenitencia();
+        reiniciarProgressbar();
         pulsacionColor();
         jugar();
     }
@@ -150,16 +159,16 @@ function confirmar() {
 //ronny
 const animarAvatar = () => {
     cambiarColor();
+    var ancho = $('.panelanimacion').width()
+    const tramo = ancho * 0.2;
+
 
     $("#avatar").animate({
-        left: `+=75`,
+        left: `+=${tramo}`,
     }, 300, function () {
-        distancia += 75;
-        var ancho = $('.panelanimacion').width()
-        var length = ancho * 0.15;
-        ancho = ancho - length;
+        distancia += tramo;
 
-        if (distancia > ancho) {
+        if (distancia > (ancho - (ancho * 0.2))) {
             const cron = $('#cronometro h3')
             contestar = `<h4 class="text-success">Ganaste el juego!! Tu tiempo fué ${cron.html()}</h4>`;
             //deshabilita 
@@ -178,13 +187,9 @@ const animarAvatar = () => {
 
 }
 const reiniciarAvatar = () => {
-    var ancho = $('.panelanimacion').width();
-    var length = ancho * 0.15;
-
-    ancho = ancho - length;
 
     $("#avatar").animate({
-        left: `-=${ancho}`,
+        left: `-=${distancia}`,
     }, 300, function () {
         // Animation complete.
         distancia = 0;
@@ -283,7 +288,7 @@ let numberPenitencia;
 $('#mostrarPenitencia').on('click', function () {
     mostrarPenitencia();
 });
-const jugarDenuevo = () =>{
+const jugarDenuevo = () => {
     $("#cont").prop('disabled', false);
     reiniciarContador();
     iniciarContador();
@@ -312,13 +317,30 @@ $(document).ready(
             'click', jugarDenuevo
         )
 
-        
+
         //on change del selector de respuesta
-        $("#responses").change(function () {    
+        $("#responses").change(function () {
             selectedResponse = $(this).children("option:selected").val();
         });
 
         iniciarContador();
+
+
+        setInterval(() => {
+            progress = progress + 1;
+
+            if (progress == 100) {
+                jugar();
+                progress = 0;
+            }
+            $(function () {
+                $("#prog").css("width", `${progress}%`);
+            });
+
+        }, 100);
+
+
+
     }
 )
 
