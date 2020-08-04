@@ -1,5 +1,6 @@
 $("#denuevo").hide();
 var progress = 0;
+var progressRef;
 
 var preguntas = [
     "¿Por qué hacer ejercicio diario?",
@@ -17,9 +18,9 @@ var respuestas = [
     ["Ejercicios aeróbicos.", "Ejercicios de flexibilidad.", "Ejercicicos espaciales.", "Ejercicios de fuerza y resistencia."],
     ["Músculo cardiaco.", "Gluteos.", " Músculos lisos.", "Triceps."],
     ["No.", "Si.", "Talvez.", "Nunca."],
-    ["Desgarros que sufren las fibras musculares.","Cuerdas para asujetar el calzado.", "Ejercicio de los tobillos y rodillas.","Ninguna."],
+    ["Desgarros que sufren las fibras musculares.", "Cuerdas para asujetar el calzado.", "Ejercicio de los tobillos y rodillas.", "Ninguna."],
     ["Gluteus maximus.", "Latissimus dorsi.", "Corazón", "Muslo"],
-    ["Tomar un suplemento de magnesio.","Ejercicios de flexibilidad antes de entrenar.", "Calentar previamente antes de entrenar.", "Entrenamiento constante y sin sobrecarga."],
+    ["Tomar un suplemento de magnesio.", "Ejercicios de flexibilidad antes de entrenar.", "Calentar previamente antes de entrenar.", "Entrenamiento constante y sin sobrecarga."],
     ["Son buenos con control de un nutricionista.", "No son buenos para la salud.", "Son buenos, por ser sustitutos energéticos que no engordan.", "Ni buenos, ni malos."],
     ["66 días.", "56 días.", "21 días.", "40 días."],
     ["Alimentos cuyo objetivo es complementar un régimen normal.", "Nutrientes: vitaminas y minerales.", "Son alimentos que ayudan a nuestro cuerpo a perder peso.", "Suplementos vitamínicos que ayudan a una dieta."]
@@ -68,18 +69,24 @@ const reiniciarContador = () => {
 
 }
 
-const reiniciarProgressbar = () => {
+function reiniciarProgressbar() {
     progress = 0;
 }
+
 
 const detenerContador = () => {
     //detener contador
     clearInterval(ref);
 }
 
+const detenerProgressbar = () => {
+    clearInterval(progressRef);
+}
 
 //chente
 function jugar() {
+
+    reiniciarProgressbar();
     var indice_aleatorio = Math.floor(Math.random() * preguntas.length);
     var res_posible = respuestas[indice_aleatorio];
 
@@ -132,7 +139,7 @@ function validar() {
         animarAvatar();
         reiniciarProgressbar();
         jugar();
-        
+
     } else {
         $('.penitencia').show();
 
@@ -182,6 +189,7 @@ const animarAvatar = () => {
             $('.penitencia').hide();
             reiniciarAvatar();
             detenerContador();
+            detenerProgressbar();
             reiniciarContador();
         }
         // Animation complete.
@@ -295,7 +303,21 @@ const jugarDenuevo = () => {
     $("#cont").prop('disabled', false);
     reiniciarContador();
     iniciarContador();
+    progress = 0;
+    progressRef = setInterval(() => {
+        progress = progress + 1;
+
+        if (progress == 100) {
+            jugar();
+            progress = 0;
+        }
+        $(function () {
+            $("#prog").css("width", `${progress}%`);
+        });
+
+    }, 100);
     $("#denuevo").hide();
+
 }
 
 
@@ -329,7 +351,7 @@ $(document).ready(
         iniciarContador();
 
 
-        setInterval(() => {
+        progressRef = setInterval(() => {
             progress = progress + 1;
 
             if (progress == 100) {
